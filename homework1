@@ -30,3 +30,54 @@ int main()    //输出特定图形
 
     return 0;
 }
+
+
+//实验二第1题
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int num1, num2;            //num1为第一个运算数，num2为第二个运算数
+    int sum, multiplication;   //sum保存和，multiplication保存积
+
+    cout << "请输入两个整数:  ";
+    cin >> num1 >> num2;
+
+    sum = num1 + num2;
+    multiplication = num1 * num2;
+
+    cout << num1 << "+" << num2 << "=" << sum << endl;
+    cout << num1 << "*" << num2 << "=" << multiplication << endl;
+    if(num2 == 0) cout << "输入的除数为0";         //判断除数是否为0，不为0再继续算商和余数
+    else
+    {
+        cout << num1 << "/" << num2 << "=" << num1/num2 << endl;
+        cout << num1 << "%" << num2 << "=" << num1%num2 << endl;
+    }
+
+    return 0;
+}
+
+
+//实验二第3题
+#include <iostream>
+
+using namespace std;
+
+int main()   // 输出一个三位数的各位数字
+{
+    int num, bai_wei, shi_wei, ge_wei;  //输入num, bai_wei,shi_wei,ge_wei分别为百、十、个位
+
+    cout << "请输入一个三位整数： ";
+    cin >> num;
+
+    bai_wei = num / 100;
+    shi_wei = num % 100 / 10;
+    ge_wei = num % 10;
+
+    cout << num << "的百位数字是" << bai_wei << ",十位数字是" << shi_wei << ",个位数字是" << ge_wei << endl;
+
+    return 0;
+}
