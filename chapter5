@@ -1,0 +1,29 @@
+
+
+//第三题
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int MAX = 101;        //数组最大容量100个字符
+    char str[MAX];
+    int i=0;
+
+    cout << "请输入一个字符串：" << endl;
+    cin.getline(str, 101);
+
+    while(str[i] != '\0')
+    {
+        if(str[i]>='A' && str[i]<='Z')              //大写字母
+            cout << str[i] << '\t' << str[i]-'A'+1;
+        else if(str[i]>='a' && str[i]<='z')         //小写字母
+            cout << str[i] << '\t' << str[i]-'a'+1;
+        else
+            cout << str[i] << '\t' << 0;            //其他字符
+        cout << endl;
+        i++;
+    }
+
+    return 0;
+}
