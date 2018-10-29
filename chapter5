@@ -27,3 +27,80 @@ int main()
 
     return 0;
 }
+
+
+//第八题
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool if_digit(char ch);
+void convert(char str[]);
+
+int main()
+{
+    const int MAX = 101;
+    char str[MAX];           //字符数组
+    int i=0, point;
+    double sum=0, tmp;       //sum为数字总和，tmp为单个数字的值
+    bool flag;
+
+    cout << "请输入一个字符串：" << endl;
+    cin.getline(str, 101);
+
+    convert(str);           //调用convert对数组进行处理
+    while(str[i]==' ')      //跳过前置空格
+        i++;
+    while(str[i] != '\0')
+    {
+        tmp = 0;
+        point = 0;
+        flag = false;
+        while(str[i]!=' ' && str[i]!='\0')
+        {
+            if(str[i] == '.')
+            {
+                flag = true;   //遇到小数点后flag变为true
+                i++;
+                continue;
+            }
+            tmp = tmp * 10 + str[i] - '0';
+            if(flag)
+                point++;      //统计此时计算到小数点后几位数
+            i++;
+        }
+        tmp = tmp/pow(10, point);     //考虑小数点的作用,算出真正的数值
+        sum = sum + tmp;
+        while(str[i]==' ')
+            i++;
+    }
+    cout << "和为：" << sum << endl;
+
+    return 0;
+}
+
+void convert(char str[])       //把字符数组中不是数字或小数点的字符转换为空格
+{
+    int i=0;
+    while(str[i] != '\0')
+    {
+        if( !(if_digit(str[i]) || str[i]=='.') )   //判断是否是数字或小数点
+            str[i] = ' ';
+        if(str[i] == '.')     //小数点的左右两个符号都是数字，该小数点才有意义，不符合条件的小数点也要去除
+        {
+            if(i==0 || str[i+1]== '\0')
+                str[i] = ' ';
+            else  if( !(if_digit(str[i-1]) && if_digit(str[i+1])) )
+                str[i] = ' ';
+        }
+        i++;
+    }
+}
+
+bool if_digit(char ch)       //输入字符ch，若ch是数字，返回true
+{
+    if(ch>='0' && ch<='9')
+        return true;
+    else
+        return false;
+}
