@@ -104,3 +104,36 @@ bool if_digit(char ch)       //输入字符ch，若ch是数字，返回true
     else
         return false;
 }
+
+
+//第十题
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char integer[1002]={'\0'};   //数组下标2~1000对应2~1000共999个数
+    int primeNum=2, flag=999;    //primeNum依次代表各个素数，flag为0时说明处理完毕
+    int i;
+
+    while(flag)
+    {
+        while(integer[primeNum] != '\0')
+            primeNum++;
+        integer[primeNum] = 'O';    //素数赋值'O'
+        cout << primeNum << endl;   //直接输出素数
+        flag--;
+        i = primeNum + primeNum;
+        while(i<1001)
+        {
+            if(integer[i] == '\0')
+            {
+                integer[i] = '*';   //合数赋值'*'
+                flag--;
+            }
+            i += primeNum;
+        }
+    }
+
+    return 0;
+}
