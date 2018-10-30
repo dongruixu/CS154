@@ -137,3 +137,73 @@ int main()
 
     return 0;
 }
+
+
+//第十一题
+#include <iostream>
+using namespace std;
+
+bool win(char str[3][3]);         
+void display(char str[3][3]);
+
+int main()
+{
+    char str[3][3]={'_','_','_','_','_','_','_','_','_'};
+    int num=1, i, j;
+    cout << "玩家1使用O,玩家2使用*" << '\n' << "游戏开始" << '\n';
+    cout << endl;
+    while(num <= 9)        //最多下9次
+    {
+        display(str);
+        cout << "请玩家" << ((num%2)?1:2) << "输入二维坐标：";
+        cin >> i >> j;
+        if(num%2)
+            str[i][j] = 'O';
+        else
+            str[i][j] = '*';
+        if(win(str))
+            break;
+        num++;
+    }
+
+    display(str);
+    if(num>9)
+        cout << "平局" << endl;
+    else
+        cout << "玩家" << ((num%2)?1:2) << "获胜" << endl;
+
+    return 0;
+}
+
+void display(char str[3][3])         //显示当前棋面布局
+{
+    for(int i=0; i<3; i++)
+    {
+        for(int j=0; j<3; j++)
+            cout << str[i][j] << "  ";
+        cout << endl;
+    }
+    cout << endl;
+}
+
+
+
+bool win(char str[3][3])                         //判断是否分出胜负
+{
+    for(int i=0; i<3; i++)
+    {
+        if(str[i][0]==str[i][1] && str[i][1]==str[i][2]) //同行相等
+            if(str[i][0]!='_')
+                return true;
+        if(str[0][i]==str[1][i] && str[1][i]==str[2][i]) //同列相等
+            if(str[0][i]!='_')
+                return true;
+    }
+    if(str[0][0]==str[1][1] && str[1][1]==str[2][2])     //左对角线
+        if(str[0][0]!='_')
+            return true;
+    if(str[0][2]==str[1][1] && str[1][1]==str[2][0])     //右对角线
+        if(str[0][2]!='_')
+            return true;
+    return false;
+}
