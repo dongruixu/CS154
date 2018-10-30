@@ -32,3 +32,42 @@ bool integer(int num)
     }
     return true;
 }
+
+
+//第二题
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double sinx(double, double);
+
+int main()
+{
+    double x, jd;
+
+    cout << "请输入x的值：";
+    cin >> x;
+    cout << "请输入精度（输入0则使用默认值）：";
+    cin >> jd;
+    if(jd == 0)
+        jd = 1e-6;
+
+    cout << sinx(x, jd) << endl;
+
+    return 0;
+}
+
+double sinx(double x, double jd)   //计算sinx的值，jd为精度
+{
+    double sum=x, tmp=x;
+    double i=1;
+
+    while(abs(tmp) > jd)
+    {
+        tmp = (-1)*tmp*x*x/(i+1)/(i+2);
+        sum += tmp;
+        i += 2;
+    }
+
+    return sum;
+}
