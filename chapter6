@@ -71,3 +71,46 @@ double sinx(double x, double jd)   //计算sinx的值，jd为精度
 
     return sum;
 }
+  
+
+//第四题
+#include <iostream>
+using namespace std;
+
+template <class T>     //函数模板
+void thesort(T a[], int n);
+
+int main()
+{
+    char a[5] = {'2','a','5','j','b'};
+    thesort(a, 5);
+    for(int i=0; i<5; i++)
+        cout << a[i] << '\t';
+
+    return 0;
+}
+
+template <class T>
+void thesort(T a[], int n)   //冒泡排序数组
+{
+    int i, j;
+    T tmp;
+    bool flag;
+
+    for(i=0; i<n-1; i++)
+    {
+        flag = false;
+        for(j=0; j<n-i-1; j++)
+        {
+            if(a[j] > a[j+1])
+            {
+                tmp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = tmp;
+                flag = true;
+            }
+        }
+        if(!flag)
+            break;
+    }
+}
