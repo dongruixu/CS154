@@ -22,3 +22,32 @@ int main()
 
     return 0;
 }
+
+
+//第二题
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char str[80], ch;
+    int i=0;
+
+    cout << "Please input a string: ";
+    while((str[i]=cin.get()) != '\n')
+        i++;
+    cout << "Please input a character: ";
+    cin >> ch;
+
+    for(i=i-1;i>=0;i--)
+    {
+        if(str[i]==ch)
+            break;
+    }
+    if(i<0)
+        cout << "Not Found" << endl;
+    else
+        cout << "Index = " << i << endl;
+
+    return 0;
+}
