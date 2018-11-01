@@ -51,3 +51,76 @@ int main()
 
     return 0;
 }
+
+//第三题
+#include <iostream>
+using namespace std;
+
+void Sort(char str[]);
+void Delete(char str[]);
+
+int main()
+{
+    char str[80];
+
+    cout << "Please input a string: ";
+    cin.getline(str,80,'\n');
+
+    if(str[0]=='\0')
+    {
+        cout << "It's not a string" << endl;
+        return 0;
+    }
+    Sort(str);
+    Delete(str);
+
+    cout << str << endl;
+
+    return 0;
+}
+
+
+void Sort(char str[])
+{
+    int i=1, j;
+    char tmp;
+    bool flag;
+    while(str[i]!='\0')
+    {
+        flag = false;
+        j = 0;
+        while(str[j+i]!='\0')
+        {
+            if(str[j]<str[j+1])
+            {
+                tmp = str[j];
+                str[j] = str[j+1];
+                str[j+1] = tmp;
+                flag = true;
+            }
+            j++;
+        }
+        if(!flag)
+            break;
+        i++;
+    }
+}
+
+void Delete(char str[])
+{
+    int i=1, j;
+    while(str[i]!='\0')
+    {
+        if(str[i]==str[i-1])
+        {
+            j = i;
+            while(str[j]!='\0')
+            {
+                str[j] = str[j+1];
+                j++;
+            }
+        }
+        else
+            i++;
+    }
+}
