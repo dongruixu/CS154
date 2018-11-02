@@ -1,0 +1,40 @@
+//第一题
+#include <iostream>
+using namespace std;
+
+bool isPrime(int num);
+
+int main()
+{
+    int m, n;
+    int Count=0;
+
+    cout << "Please input m,n: ";
+    cin >> m >> n;
+
+    for(; m<=n; m++)
+    {
+        if(isPrime(m))     //m是素数，Count加1
+            Count++;
+    }
+
+    cout << "Count = " << Count << endl;
+
+    return 0;
+}
+
+bool isPrime(int num)      //判断num是否为素数
+{
+    if(num==1)
+        return false;
+    if(num==2)
+        return true;
+    if(num%2 == 0)        //偶数不是素数（除了2）
+        return false;
+    for(int i=3; i<num/2; i++)
+    {
+        if(num%i == 0)    //有真因数则不是素数
+            return false;
+    }
+    return true;
+}
