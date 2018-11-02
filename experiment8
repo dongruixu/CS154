@@ -38,3 +38,40 @@ bool isPrime(int num)      //判断num是否为素数
     }
     return true;
 }
+
+//第二题
+#include <iostream>
+using namespace std;
+
+bool perfectNumber(int num);
+int main()
+{
+    int m, n;
+
+    cout << "Please input m,n: ";
+    cin >> m >> n;
+
+    for(; m<=n; m++)        //m遍历m到n的数
+    {
+        if(perfectNumber(m))
+            cout << m << '\t';
+    }
+
+    return 0;
+}
+
+bool perfectNumber(int num)   //判断num是否为完全数
+{
+    int sum=1, i=2;           //1一定是一个正整数的因子
+
+    while(i<=num/2)
+    {
+        if(num%i == 0)        //i是num的因子，则sum加上i
+            sum += i;
+        i++;
+    }
+    if(sum == num)
+        return true;
+    else
+        return false;
+}
