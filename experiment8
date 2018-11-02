@@ -75,3 +75,37 @@ bool perfectNumber(int num)   //判断num是否为完全数
     else
         return false;
 }
+
+//第三题
+#include <iostream>
+using namespace std;
+
+void printInt(int n, int base);
+
+int main()
+{
+    int n, base;
+
+    cout << "Please input n, base: ";
+    cin >> n >> base;
+
+    cout << n << "(10) = ";
+    printInt(n, base);
+    cout << "(" << base << ")";
+
+    return 0;
+}
+
+void printInt(int n, int base)    //将十进制数n转换为base进制输出
+{
+    char str[17] = "0123456789ABCDEF";   //将下标值与数值对应
+
+    if(n < base)                  //递归终止条件
+        cout << str[n];
+    else
+    {
+        printInt(n/base, base);   //递归输出n/base
+        cout << str[n%base];
+    }
+}
+
