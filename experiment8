@@ -109,3 +109,53 @@ void printInt(int n, int base)    //将十进制数n转换为base进制输出
     }
 }
 
+
+//实验八第4题
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+void guess(int num);
+
+int main()
+{
+    int num;
+    char ch;
+
+    srand(time(NULL));
+
+    cout << "I have a number between 1 and 100." << endl;
+    do{
+        num = (rand() * 100 / (RAND_MAX+1)) + 1;
+        guess(num);               //调用guess函数
+        cout << "Would you like to play again(y or n)? ";
+        cin >> ch;
+    }while(ch == 'y');            //输入y重新开始游戏
+
+    return 0;
+}
+
+void guess(int num)    //num为待猜测数
+{
+    int GuessNum;      //用户猜测的数
+
+    cout << "Please input your guess: ";
+    cin >> GuessNum;
+
+    while(GuessNum != num)
+    {
+        if(GuessNum > num)
+        {
+            cout << "Too high! Try again: ";
+            cin >> GuessNum;
+        }
+        else
+        {
+            cout << "Too low! Try again: ";
+            cin >> GuessNum;
+        }
+    }
+
+    cout << "Excellent! You guessed the number!" << endl;
+}
