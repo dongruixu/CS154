@@ -72,6 +72,38 @@ double sinx(double x, double jd)   //计算sinx的值，jd为精度
     return sum;
 }
   
+//第三题
+#include <iostream>
+using namespace std;
+
+void stringCopy(char str2[], char str1[]);
+
+int main()
+{
+    char str1[20];
+    char str2[20];
+
+    cout << "请输入字符串1：";
+    cin.getline(str1, 20, '\n');
+
+    stringCopy(str2, str1);       //把str1赋值给str2
+    cout << str2 << endl;
+
+    return 0;
+}
+
+void stringCopy(char str2[], char str1[])
+{
+    int i = 0;
+
+    while(str1[i] != '\0')       //把字符串的字符逐个复制
+    {
+        str2[i] = str1[i];
+        i++;
+    }
+    str2[i] = '\0';
+}
+
 
 //第四题
 #include <iostream>
