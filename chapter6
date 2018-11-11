@@ -224,3 +224,41 @@ int index(int a[], int num, int i, int j)
         }
     }
 }
+
+//第八题
+#include <iostream>
+using namespace std;
+
+void charge(int num);
+
+int main()
+{
+    int money;
+
+    cout << "请输入找的钱数：";
+    cin >> money;
+
+    charge(money);
+
+    return 0;
+}
+
+void charge(int num)
+{
+    if(num <= 0)
+        cout << "钱数应为正数。" << endl;
+    else
+    {
+        int yuan;
+        yuan = num/10;
+        num = num%10;
+        cout << "1元硬币数为：" << yuan << endl;
+        yuan = num/5;
+        num = num%5;
+        cout << "5角硬币数为：" << yuan << endl;
+        yuan = num/2;
+        num = num%2;
+        cout << "2角硬币数为：" << yuan << endl;
+        cout << "1角硬币数为：" << num << endl;
+    }
+}
