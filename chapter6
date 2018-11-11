@@ -262,3 +262,44 @@ void charge(int num)
         cout << "1角硬币数为：" << num << endl;
     }
 }
+
+//第十题
+#include <iostream>
+using namespace std;
+
+void PrintFibonacci(int MaxNum);
+
+int main()
+{
+    int MaxNum;
+
+    cout << "请输入要输出的最大数：";
+    cin >> MaxNum;
+
+    PrintFibonacci(MaxNum);
+
+    return 0;
+}
+
+void PrintFibonacci(int MaxNum)
+{
+    if(MaxNum < 0)
+        cout << "输入非正数。" << endl;
+    else if(MaxNum == 0)
+        cout << "F0 = 0" << endl;
+    else
+    {
+        int num1 = 0;
+        int num2 = 1;
+        int sum = 1;
+        cout << "F0 = 0" << endl;
+        cout << "F1 = 1" << endl;
+        for(int i=2; sum<MaxNum; i++)
+        {
+            cout << "F" << i << " = " << sum << endl;
+            num1 = num2;
+            num2 = sum;
+            sum = num1 + num2;
+        }
+    }
+}
