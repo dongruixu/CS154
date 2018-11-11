@@ -303,3 +303,43 @@ void PrintFibonacci(int MaxNum)
         }
     }
 }
+
+//第十一题
+#include <iostream>
+using namespace std;
+
+void PrintN(int a[], int Size, int N);
+
+int main()
+{
+    int n;
+    int a[10] = {4,7,2,8,23,87,25,0,46,34};
+    cout << "请输入要找第几大的数：";
+    cin >> n;
+
+    PrintN(a, 10, n);
+
+    return 0;
+}
+
+void PrintN(int a[], int Size, int N)
+{
+    int Max = a[0], j = 0;
+    int i, tmp;
+    for(i=1; i<Size; i++)
+    {
+        if(a[i] > Max)
+        {
+            Max = a[i];
+            j = i;
+        }
+    }
+    tmp = a[j];
+    a[j] = a[Size-1];
+    a[Size-1] = tmp;
+    if(N == 1)
+        cout << "该数为：" << Max << endl;
+    else
+        PrintN(a, Size-1, N-1);
+
+}
