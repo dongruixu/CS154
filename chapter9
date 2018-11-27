@@ -1,0 +1,91 @@
+//第1题
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void get(int &low, int &high);
+void caculate(int low, int high);
+void getStr(vector<int> &arr, int low, int high);
+bool judge(vector<int> &arr, int n);
+
+int main()
+{
+    int low, high;
+
+	get(low, high);
+	caculate(low, high);
+
+    return 0;
+}
+
+void get(int &low, int &high)
+{
+	do {
+		cout << "输入要显示的范围：";
+		cin >> low >> high;
+	} while (low < 8 || high < low);
+}
+
+void caculate(int low, int high)
+{
+	vector<int> arr;
+	getStr(arr, low, high);
+
+	int i, j;
+	int num1, num2;
+	bool flag;
+
+	if (low % 2 != 0)
+		low++;
+	for (i = low; i <= high; i += 2)
+	{
+		flag = false;
+		for (j = 0; j < int(arr.size()); j++)
+		{
+			num1 = arr[j];
+			num2 = i - num1;
+			if (judge(arr, num2))
+			{
+				cout << i << " = " << num1 << " + " << num2 << endl;
+				flag = true;
+				break;
+			}
+		}
+		if (!flag)
+			cout << "无法表示该偶数" << endl;
+	}
+}
+
+void getStr(vector<int> &arr, int low, int high)
+{
+	int i, j;
+	bool flag;
+
+	for (i=3; i <= high - 3; i += 2)
+	{
+		flag = true;
+		for (j = 3; j <= i / 3; j++)
+		{
+			if (i%j == 0)
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+		{
+			arr.push_back(i);
+		}
+	}
+}
+
+bool judge(vector<int> &arr, int n)
+{
+	int i;
+	for (i = 0; i < int(arr.size()); i++)
+	{
+		if (arr[i] == n)
+			return true;
+	}
+	return false;
+}
