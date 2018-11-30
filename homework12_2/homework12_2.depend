@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1543497685 source:d:\xudongrui\program\homework12_2\main.cpp
+	"student.h"
+
+1543498220 d:\xudongrui\program\homework12_2\student.h
+	<iostream>
+	<vector>
+	<cstring>
+
+1543498467 source:d:\xudongrui\program\homework12_2\student.cpp
+	"student.h"
+
